@@ -54,3 +54,73 @@ The system helps Managers assign tasks, review progress, and Employees manage th
 
 ## 📂 Project Structure
 
+SmartTaskManagement/
+│
+├── App_Data/
+│
+├── App_Start/
+│   ├── BundleConfig.cs
+│   ├── FilterConfig.cs
+│   └── RouteConfig.cs
+│
+├── Content/
+│   ├── CSS files / Bootstrap theme / Custom styles
+│
+├── Controllers/
+│   ├── AccountController.cs
+│   ├── EmployeeController.cs
+│   └── ManagerController.cs
+│
+├── Data/
+│   └── ApplicationDbContext.cs
+│
+├── Filters/
+│   └── (Custom authorization filters if any)
+│
+├── Helpers/
+│   └── SessionKeys.cs
+│
+├── Migrations/
+│   ├── 202511221107385_Init.cs
+│   └── Configuration.cs
+│
+├── Models/
+│   ├── TaskItem.cs
+│   ├── User.cs
+│   └── ViewModels/
+│       ├── AssignTaskViewModel.cs
+│       ├── LoginViewModel.cs
+│       ├── SignUpViewModel.cs
+│       └── ViewTasksViewModel.cs
+│
+├── Scripts/
+│   └── jQuery / Bootstrap JS / Validation files
+│
+├── Views/
+│   ├── Account/
+│   │   ├── Login.cshtml
+│   │   └── SignUp.cshtml
+│   │
+│   ├── Employee/
+│   │   ├── Index.cshtml
+│   │   ├── EditTask.cshtml
+│   │   └── ViewTasks.cshtml
+│   │
+│   ├── Manager/
+│   │   ├── AssignTask.cshtml
+│   │   ├── ReviewTask.cshtml
+│   │   └── ViewDepartmentTasks.cshtml
+│   │
+│   └── Shared/
+│       ├── _Layout.cshtml
+│       ├── _ViewStart.cshtml
+│       └── Error.cshtml
+│
+├── Global.asax
+├── README.md
+├── favicon.ico
+├── packages.config
+└── Web.config
+
+
+
