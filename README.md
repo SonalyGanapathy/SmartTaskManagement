@@ -122,5 +122,15 @@ SmartTaskManagement/
 ├── packages.config
 └── Web.config
 
+---
+
+## 📧 Contact
+
+**Developer:** Sonaly Ganapathy  
+📩 **Email:** iamsonaly@gmail.com 
+🐙 **GitHub:** https://github.com/SonalyGanapathy
+🔗 **LinkedIn:** https://www.linkedin.com/in/sonaly-ganapathy-4007a7230/
+
+If you have any questions, suggestions, or feedback, feel free to reach out!
 
 
