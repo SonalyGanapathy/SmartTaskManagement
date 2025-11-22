@@ -1,0 +1,52 @@
+﻿@model SmartTaskManagement.Models.TaskItem
+@{
+    ViewBag.Title = "Edit Task";
+    Layout = "~/Views/Shared/_Layout.cshtml";   // ← Important
+}
+
+<h2 class="page-title mb-4">Edit Task</h2>
+
+@using (Html.BeginForm("EditTask", "Employee", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.TaskId)
+    @Html.HiddenFor(m => m.ProjectName)
+
+    <div class="row g-4">
+
+        <!-- Project Name -->
+        <div class="col-12">
+            <label class="form-label fw-bold">Project Name</label>
+            <input type="text" class="form-control" value="@Model.ProjectName" readonly />
+        </div>
+
+        <!-- Description -->
+        <div class="col-12">
+            <label class="form-label fw-bold">Description</label>
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = 4 })
+        </div>
+
+        <!-- Status -->
+        <div class="col-12">
+            <label class="form-label fw-bold">Status</label>
+            @Html.DropDownListFor(m => m.Status, new SelectList(new[] {
+                "ToDo", "Doing", "Hold", "Done"
+            }, Model.Status), new { @class = "form-select" })
+        </div>
+
+        <!-- Submit -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-success w-100">
+                Update Task
+            </button>
+        </div>
+
+    </div>
+}
+
+<!-- Back button -->
+<div class="mt-3">
+    <a href="@Url.Action("ViewTasks", "Employee")" class="btn btn-secondary">
+        Back
+    </a>
+</div>

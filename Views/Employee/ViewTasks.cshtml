@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SmartTaskManagement.Models.TaskItem>
+@{
+    ViewBag.Title = "My Tasks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="page-title">My Assigned Tasks</h3>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success text-center custom-alert">@TempData["Success"]</div>
+}
+
+<div class="table-card">
+    <table class="table custom-table">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Estimated Time</th>
+                <th>Assigned By</th>
+                <th>Updated At</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>@t.ProjectName</td>
+                    <td>@t.Description</td>
+                    <td>
+                        <span class="status-pill">@t.Status</span>
+                    </td>
+                    <td>@t.EstimatedTime</td>
+                    <td>@(t.AssignedByUser?.Name)</td>
+                    <td>@t.UpdatedAt.ToString("g")</td>
+
+                    <td class="text-center">
+                        <a href="@Url.Action("EditTask", "Employee", new { id = t.TaskId })"
+                           class="btn btn-sm btn-primary custom-btn">
+                            Edit
+                        </a>
+
+                        <a href="@Url.Action("Login", "Account")"
+                           class="btn btn-sm btn-secondary custom-btn">
+                            Back
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

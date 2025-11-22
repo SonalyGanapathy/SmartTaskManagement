@@ -1,0 +1,80 @@
+﻿@model SmartTaskManagement.Models.TaskItem
+@{
+    ViewBag.Title = "Review Task";
+    Layout = "~/Views/Shared/_Layout.cshtml";   // Use your global layout
+}
+
+<h2 class="page-title mb-4">Review Task</h2>
+
+<div class="row g-4">
+
+    <!-- Project -->
+    <div class="col-md-6">
+        <label class="form-label fw-bold">Project</label>
+        <input type="text" class="form-control" value="@Model.ProjectName" readonly />
+    </div>
+
+    <!-- Assigned To -->
+    <div class="col-md-6">
+        <label class="form-label fw-bold">Assigned To</label>
+        <input type="text" class="form-control" value="@(Model.AssignedToUser?.Name)" readonly />
+    </div>
+
+    <!-- Assigned By -->
+    <div class="col-md-6">
+        <label class="form-label fw-bold">Assigned By</label>
+        <input type="text" class="form-control" value="@(Model.AssignedByUser?.Name)" readonly />
+    </div>
+
+    <!-- Status -->
+    <div class="col-md-6">
+        <label class="form-label fw-bold">Status</label>
+        <input type="text" class="form-control" value="@Model.Status" readonly />
+    </div>
+
+    <!-- Description -->
+    <div class="col-12">
+        <label class="form-label fw-bold">Description</label>
+        <textarea class="form-control" rows="3" readonly>@Model.Description</textarea>
+    </div>
+
+</div>
+
+<hr class="my-4" />
+
+<h4 class="text-primary mb-3">Manager Review</h4>
+
+@using (Html.BeginForm("ReviewTask", "Manager", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.TaskId)
+
+    <div class="row g-3">
+
+        <!-- Review Status -->
+        <div class="col-md-6">
+            <label class="form-label fw-bold">Review Status</label>
+            <select name="reviewStatus" class="form-select">
+                <option value="Reviewed">Reviewed</option>
+                <option value="Needs Improvement">Needs Improvement</option>
+            </select>
+        </div>
+
+        <!-- Manager Comments -->
+        <div class="col-12">
+            <label class="form-label fw-bold">Manager Comments</label>
+            <textarea name="managerComments" class="form-control" rows="3"></textarea>
+        </div>
+
+        <!-- Submit -->
+        <div class="col-12">
+            <button type="submit" class="btn btn-success w-100">Submit Review</button>
+        </div>
+
+    </div>
+}
+
+<!-- Back Button -->
+<div class="mt-3">
+    <a href="@Url.Action("AssignTask", "Manager")" class="btn btn-secondary">Back</a>
+</div>
